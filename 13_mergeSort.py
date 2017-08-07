@@ -1,3 +1,5 @@
+import sys
+
 def mergeSort(alist):
     count = 0
     leftcount = 0
@@ -14,7 +16,7 @@ def mergeSort(alist):
        j = 0
 
        while i < len(lefthalf) and j < len(righthalf):
-         if lefthalf[i] < righthalf[j]:
+         if lefthalf[i] <= righthalf[j]:
              blist.append(lefthalf[i])
              i += 1
          else:
@@ -22,14 +24,24 @@ def mergeSort(alist):
              j += 1
              count += len(lefthalf[i:])
 
-       while i < len(lefthalf):
-          blist.append(lefthalf[i])
-          i += 1
+       if i < len(lefthalf):
+          blist = blist + lefthalf[i:]
 
-       while j < len(righthalf):
-          blist.append(righthalf[j])
-          j += 1
+       if j < len(righthalf):
+          blist = blist + righthalf[j:]
     else:
         blist = alist[:]
-
+    # print(count,leftcount,rightcount, blist)
     return count + leftcount + rightcount, blist
+
+def countInversions(arr):
+    count, res = mergeSort(arr)
+    return count
+
+if __name__ == "__main__":
+    t = int(input().strip())
+    for a0 in range(t):
+        n = int(input().strip())
+        arr = list(map(int, input().strip().split(' ')))
+        result = countInversions(arr)
+        print(result)
