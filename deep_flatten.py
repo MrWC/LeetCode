@@ -1,7 +1,8 @@
 from copy import deepcopy
 
 def flatten_list(nested_list):
-    """Flatten an arbitrarily nested list, without recursion (to avoid
+    """
+    Flatten an arbitrarily nested list, without recursion (to avoid
     stack overflows). Returns a new list, the original list is unchanged.
     >> list(flatten_list([1, 2, 3, [4], [], [[[[[[[[[5]]]]]]]]]]))
     [1, 2, 3, 4, 5]
